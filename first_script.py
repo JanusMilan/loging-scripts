@@ -104,12 +104,6 @@ with open('output.txt', 'w') as output:
     for value in sort_output_dict.values():    
         output.write(value + "\n")
 
- # ToDo 
- # wie oft wird Script ausgefüht 
- # automatisch im cron UND immer letzt xyz.log automatisch laden? aktuelle Monat? letzte volle Monat? 
- # manuell auführen und mit input Monat zu prüfen wählen?
-
-
  
  
  
