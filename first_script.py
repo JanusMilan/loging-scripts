@@ -1,6 +1,9 @@
-import re                       # regex Modul     
-import io                       # für Steams z.B. open()    
-import collections          # für Collections, hier OrderedDict Dictionary
+# regex Modul
+import re         
+# für Steams, hier open()                   
+import io     
+ # für Collections, hier OrderedDict Dictionar                    
+import collections         
     
 # Befüllen zwei Dictionaries 
 # Dictionary server_start_entries_dict enthält Meldungen "server started at http://0.0.0.0:1999" 
