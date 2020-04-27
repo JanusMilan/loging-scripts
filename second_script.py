@@ -9,21 +9,12 @@ def get_number_loaded_programs_message(prog_load_number, message):
         return message + 'INFO: loaded ' + prog_load_number + ' programs'   
     
 def create_log_message_entry(server_start_entry, prog_load_entry):          
-    #  'prog_load_entry' match to 'server_start_entry' IS NOT found
-    if prog_load_entry == 'missing':        
+    if prog_load_entry == 'missing' and server_start_entry[1]  == '03:00' :        
         message = 'ERROR: server started at: ' + server_start_entry[0] + ' an programs are not loaded'
-    else:            
-        # 'prog load entry' match to 'server start entry' found AND server start time IS correct
-        if ( server_start_entry[0] == prog_load_entry[0] ) and ( server_start_entry[1]  == '03:00' ):
-            message = get_number_loaded_programs_message(prog_load_entry[2]  ,'INFO: server started at: ' + server_start_entry[0] + ' and ') 
-        #  'prog load entry' match to 'server start entry' found AND server start time IS NOT correct   
-        elif ( server_start_entry[0] == prog_load_entry[0] ) and  ( server_start_entry[1]  != '03:00' ):
-            message = get_number_loaded_programs_message( prog_load_entry[2] , 'ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ' and ')  
-        #  'prog load entry' NOT match to 'server start entry' found AND server start time IS correct   
-        elif ( server_start_entry[0] != prog_load_entry[0] ) and  ( server_start_entry[1]  == '03:00' ):
-            message = 'ERROR: server started at: ' + server_start_entry[0] + ' and programs are not loaded'
-        else:
-            message =  'ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ' and programs are not loaded'           
+    elif prog_load_entry == 'missing' and server_start_entry[1]  != '03:00' :
+        message =  'ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ' and programs are not loaded'     
+    else:         # 'prog load entry' match to 'server start entry' found AND server start time IS correct
+        message = get_number_loaded_programs_message(prog_load_entry[2]  ,'INFO: server started at: ' + server_start_entry[0] + ' and ')        
     with open('output.log', 'a+') as output: 
         output.write(message + "\n")            
 
@@ -46,7 +37,7 @@ def get_number_load_programs_line(zeile):
         prog_load_number =  prog_load_number[0] 
     if  len( re.findall(r"Number of programs stored in the database", zeile) ) > 0:  
         date_hour_min = get_date_hour_min(zeile) 
-        return [ date_hour_min[0],  date_hour_min[1], prog_load_number]
+        return [ date_hour_min[0],  date_hour_min[1],  prog_load_number]
     else:
         return None            
         
@@ -54,7 +45,7 @@ def state_machine():
     status_server_start = "wait"
     status_prog_load = "wait"
     counter = 0
-    with open('ausgabe.log', 'r') as eingabe:             
+    with open('04.log', 'r') as eingabe:             
         for zeile in eingabe:
             if  status_server_start != "run":             
                 server_start_line = get_server_start_line(zeile)   
@@ -69,11 +60,12 @@ def state_machine():
                     number_load_programs_line = get_number_load_programs_line(zeile)
                     # found '.. programs stored ..' entry
                     if  number_load_programs_line is not None: 
-                        create_log_message_entry(server_start_line, number_load_programs_line)
-                        status_server_start = "wait"
-                        status_prog_load = "wait"
-                        counter = 0
-                        continue
+                        if server_start_line[0] == number_load_programs_line[0]:
+                            create_log_message_entry(server_start_line, number_load_programs_line)
+                            status_server_start = "wait"
+                            status_prog_load = "wait"
+                            counter = 0
+                            continue
                 # entry '.. programs stored ..' NOT found        
                 else:
                     create_log_message_entry(server_start_line, "missing")
