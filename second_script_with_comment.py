@@ -2,7 +2,7 @@ import re
 
 # Funktion zur Generierung des Messages und für die Ausgabe in Datei 'output.log'
 def create_log_message_entry(server_start_entry, prog_load_entry):      
-    with open('output.log', 'a+') as output:     
+    with open('output.txt', 'a+') as output:     
         # Fall 1: Server hat Programme NICHT geladen  UND  startete planmässig
         if prog_load_entry != 'missing' and server_start_entry[1] == '03:00':
             output.write('INFO: server started at: ' + server_start_entry[0] + ';  INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")  
