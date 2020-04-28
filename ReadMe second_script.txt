@@ -7,7 +7,7 @@ Was ist die Aufgabe des Programm
   -> Programm lädt Log File und wertet es aus
   -> Es wird nach Meldung für Server Start gesucht
   -> Dann wird zugehörige Meldung "..Number of programs stored.." gesucht
-  -> Beide Meldungen werden in Funktion "create_log_message_entry" ausgewertet
+  -> Beide Meldungen werden in Funktion "evaluate_server_start_entry" ausgewertet
      -> Prüfenn ob der Server planmäßig um 03:00 gestartet wurde
 	 -> Prüfenn ob nach server Start die User Programme geladen sind
      -> Nach Auswertung des Programms wird das Ergebnis in einer Ausgabe File ausgegeben
@@ -18,7 +18,7 @@ Was ist die Aufgabe des Programm
 			 --> Server startete NICHT planmässig und Programme sind NICHT geladen 	
   -> Es wird sukzessive nach weiteren Meldungen für Server Start gesucht bim zum EOF
   -> Wenn alle Meldungen für Server Start im Log Datei erfasst sind
-         -> Dann wird Ausgabe File in Funktion auswerten_server_start ausgewertet, 
+         -> Dann wird Ausgabe File in Funktion "evaluate_server_starts" ausgewertet, 
 		     --> ob alle Sertver Start regulär sind oder gibt es ERRORS
          -> Entsprechende Meldung wird im Ausgabe File am EOF angehängt	 
 

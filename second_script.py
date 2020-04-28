@@ -1,59 +1,65 @@
 import re
-import sys
 
-# Funktion zur Generierung des Messages und für die Ausgabe in Datei 'output.log'
-def create_log_message_entry(server_start_entry: list, prog_load_entry: str ) -> str:      
-    with open('output.txt', 'a+') as output:     
-        if prog_load_entry != 'missing' and server_start_entry[1] == '03:00':
-            output.write('INFO: server started at: ' + server_start_entry[0] + ';  INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")  
-        elif prog_load_entry != 'missing' and server_start_entry[1]  != '03:00' :    
-            output.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + '; INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")  
-        elif prog_load_entry == 'missing' and server_start_entry[1] == '03:00' :
-            output.write('INFO: server started at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
-        else:
-            output.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
-
-# State Machine Funktion zur Suchen der Meldungen
-def find_enties():
-    """ Sucht die Log Datei nach Meldungen "..server started at.." und "..Number of programs stored.."   
-    gibt beide Meldungen an die "create_log_message_entry" Funktion weiter zur Auswertung
-    arguments:
-    param: status_server_start: flag für Steurung der State Machine  
-    :returns: gibt nicht zurück
+def evaluate_server_start_entry(server_start_entry, prog_load_entry):
+    """ Evaluates the messages "..server started at.." and "..Number of programs stored.." 
+    and writes evaluation into the output file
     """
-    status_server_start = "wait"
+    with open('output.txt', 'a+') as output_file:
+        if prog_load_entry != " entry ..programs are loaded.. is missing" and server_start_entry[1] == '03:00':
+            output_file.write('INFO: server started at: ' + server_start_entry[0] + ';  INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")
+        elif prog_load_entry != " entry ..programs are loaded.. is missing"and server_start_entry[1]  != '03:00':
+            output_file.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + '; INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")
+        elif prog_load_entry == " entry ..programs are loaded.. is missing" and server_start_entry[1] == '03:00':
+            output_file.write('INFO: server started at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
+        else:
+            output_file.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
+
+def search_server_start_entry():
+    """ Searches the log file for messages "..server started at.." and "..Number of programs stored.."   
+    and gives both reports to the "evaluate_server_start_entry" Function to continue the evaluation
+    :param: status_server_start: Control flag for the final State Machine  
+    """
+    status_server_start = "wait for server start"
     counter = 0
-    with open('ausgabe.log', 'r') as eingabe:             
-        for zeile in eingabe:
-            date = re.match(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", zeile)
-            if  status_server_start == "wait": 
-                if  re.search(r"server started at http://0.0.0.0:1999" , zeile)  is not None: 
-                    status_server_start =  [ date[0],  date[1] ]
+    with open('ausgabe.log', 'r') as input_file:             
+        for row in input_file:
+            date_of_entry = re.match(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)
+            if  status_server_start == "wait for server start":
+                if  re.search(r"server started at http://0.0.0.0:1999" , row)  is not None:
+                    status_server_start =  [date_of_entry[0],  date_of_entry[1]]
                     continue
-            if  status_server_start != "wait": 
+            if  status_server_start != "wait for server start":
                 if counter < 2:
                     counter = counter + 1
-                    if  len( re.findall(r"Number of programs stored in the database", zeile) ) > 0 : 
-                        create_log_message_entry(status_server_start, [ date[0] , re.findall(r"\[(\d{1,})\]", zeile)[0]] )
-                        status_server_start = "wait"
+                    if  len( re.findall(r"Number of programs stored in the database", row) ) > 0: 
+                        evaluate_server_start_entry(status_server_start, [ date_of_entry[0] , re.findall(r"\[(\d{1,})\]", row)[0]])
+                        status_server_start = "wait for server start"
                         counter = 0
                 else:
-                    create_log_message_entry(status_server_start, "missing")
-                    status_server_start = "wait"
-                    counter = 0                             
-                    
+                    evaluate_server_start_entry(status_server_start, " entry ..programs are loaded.. is missing")
+                    status_server_start = "wait for server start"
+                    counter = 0
+
+def evaluate_server_starts():      
+    """ Evaluates the evaluation of the log file, whether all server starts are regular
+    and appends evaluation to the output file
+    """
+    list_of_errors = list()
+    status_error_server_start = "no server start error"
+    with open('output.txt', 'r') as input_file:
+        for row in input_file:
+             if re.search(r"ERROR", row)  is not None:
+                status_error_server_start = "server start error occurs"
+                list_of_errors. append(re.search(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)[0])
+    if status_error_server_start == "server start error occurs":
+        with open('output.txt', 'a+') as input_file:
+            input_file.write('server start error occurs on' + "\n")
+            for element in list_of_errors:
+                input_file.write("--> " + element + "\n")          
+
 def main():
-    # help(find_enties)
-    #print(dir(find_enties))
-    print(find_enties.__doc__)
-    print(create_log_message_entry.__annotations__)
-    #print(help(find_enties))
-    find_enties()
+    search_server_start_entry()
+    evaluate_server_starts()
 
 if __name__ == "__main__":
-    main()      
-        
-        
-        
-        
-
+    main()
