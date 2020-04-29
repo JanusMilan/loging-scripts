@@ -1,0 +1,106 @@
+# case 1
+# Server did NOT start on schedule and loads the programs
+2020-04-01 04:00:19,995 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+3
+2020-04-01 04:00:20,239 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [283384]
+
+#################################################################################
+# case 2
+# Server started on schedule and does NOT load the programs
+2020-04-02 03:00:18,794 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+3
+
+#################################################################################
+# case 3
+# Server did NOT start on schedule and does NOT load the programs
+2020-04-03 04:00:18,445 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+3
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-04 03:00:19,542 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+3
+2020-04-04 03:00:19,769 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [284419]
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-05 03:00:18,485 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+2020-04-05 03:00:18,721 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [284568]
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-06 03:00:19,720 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-06 03:00:19,955 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [284727]
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-07 03:00:22,674 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-07 03:00:22,916 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [285036]
+
+#################################################################################
+# case 1
+# Server did NOT start on schedule and loads the programs
+2020-04-08 04:00:20,950 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-08 04:00:21,183 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [285371]
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-09 03:00:18,029 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-09 03:00:18,327 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [285666]
+
+#################################################################################
+# case 1
+# Server did NOT start on schedule and loads the programs
+2020-04-10 04:00:18,419 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-10 04:00:18,649 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [286186]
+
+#################################################################################
+# case 2
+# Server started on schedule and does NOT load the programs
+2020-04-11 03:00:19,001 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-12 03:00:18,762 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+2020-04-12 03:00:18,995 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [286553]
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-13 03:00:18,571 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2020-04-13 03:00:18,798 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [286814]
+
+#################################################################################
+# case 3
+# Server did NOT start on schedule and does NOT load the programs
+2020-04-14 04:00:20,005 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2
+
+#################################################################################
+# case 4
+# Server started on schedule and loads the programs
+2020-04-15 03:00:21,868 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+1
+2020-04-15 03:00:22,132 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Number of programs stored in the database: [287629]
