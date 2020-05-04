@@ -1,9 +1,13 @@
 
-Was ist die Aufgabe des Programm
+############################################################################# 
+################ Programm search_server_error.py
+############################################################################# 
+Allgemeines zum Programm
 -> Es gibt monatliche Log Datei 
 -> Log Datei beinhaltet unter anderen auch die Meldungen für Server Start
 -> Maximal 4 Zeilen später kommt die zugehörige Meldung dass die User Programme geladen sind
--> Aufgabe des Programms ist:
+-> Programm überprüft ob Server Start regulär und regelmässig sind
+-> Skizze des Programms:
   -> Programm lädt Log File und wertet es aus
   -> Es wird nach Meldung für Server Start gesucht
   -> Dann wird zugehörige Meldung "..Number of programs stored.." gesucht
@@ -20,9 +24,21 @@ Was ist die Aufgabe des Programm
   -> Wenn alle Meldungen für Server Start im Log Datei erfasst sind
          -> Dann wird Ausgabe File in Funktion "evaluate_server_starts" ausgewertet, 
 		     --> ob alle Sertver Start regulär sind oder gibt es ERRORS
-         -> Entsprechende Meldung wird im Ausgabe File am EOF angehängt	 
+         -> Entsprechende Meldung wird im Ausgabe File am EOF angehängt	
+############################################################################# 
 
-	
-	 
-	 
+############################################################################# 
+################ Programm search_daily_errors.py
+############################################################################# 
+Allgemeines zum Programm
+-> Es wird beliebige monatliche Log Datei analysiert 
+-> Log Datei beinhaltet die Meldungen für Server Start (standardmässig um 03:00)
+-> Programm lädt alle ERROR LOG Zeile für ganze Tag, wobeit zu prüfende Tag interaktiv eingegeben wird
+-> Skizze des Programms:
+  -> Program wird gestartet mit Angabe des prüfenden Monats und Tags  	
+  -> Programm lädt  Log File für zu prüfendes Monat
+  -> Im Log File wird nach Meldung für Server Start am vorgegebenem Datum gesucht
+  -> Alle Meldungen LOG ERROR für diesen Tag bis zum nächsten Sarver Start rausgesucht und in eine Datei ausgegeben 
+############################################################################# 
+
 
