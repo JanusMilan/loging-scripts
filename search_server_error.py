@@ -1,101 +1,90 @@
 import re
-import os
-import datetime
 import sys
+            
+def check_if_sheduled(start_time):
+    """ Evaluates if server start is  sheduled """
+    sheduled_starts = ['03:00' , '03:01' , '03:02' , '03:03']
+    return start_time in sheduled_starts
 
-def evaluate_server_start_entry(server_start_entry, prog_load_entry):
-    """ Evaluates the messages "..server started at.." and "..Number of programs stored.." 
-    and writes evaluation into the output file
-    """
-    with open('output.log', 'a+') as output_file:
-        if prog_load_entry != " entry ..programs are loaded.. is missing" and server_start_entry[1] == '03:00':
-            output_file.write('INFO: server started at: ' + server_start_entry[0] + ';  INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")
-        elif prog_load_entry != " entry ..programs are loaded.. is missing"and server_start_entry[1]  != '03:00':
-            output_file.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + '; INFO: loaded ' + prog_load_entry[1] + ' programs' + "\n")
-        elif prog_load_entry == " entry ..programs are loaded.. is missing" and server_start_entry[1] == '03:00':
-            output_file.write('INFO: server started at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
+def evaluate_server_start_entry(start_date, start_time, number_of_programs):    
+    """ Evaluates the server start messages """
+    sheduled_start = 'server started at: ' 
+    un_sheduled_start = 'server started UNSHEDULED at: '
+    programs_occurs = '; with number of programs entry' 
+    programs_dont_occurs =  ': ERROR no number of programs entry'    
+    if check_if_sheduled(start_time):     
+        if number_of_programs == "None":
+            return sheduled_start + start_date + programs_dont_occurs
         else:
-            output_file.write('ERROR: server started UNSCHEDULED at: ' + server_start_entry[0] + ': ERROR programs are not loaded' + "\n")
-
-
-def search_server_start_entry(current_log_file: str):
-    """ Searches the log file for messages "..server started at.." and "..Number of programs stored.."   
-    and gives both reports to the "evaluate_server_start_entry" Function to continue the evaluation
-    :param: current_log_file: current month log file 
-    :type current_log_file: string    
-    """
-    status_server_start : str = "wait for server start"
-    counter = 0
-    with open(current_log_file, 'r') as input_file:             
-        for row in input_file:
-            date_of_entry = re.match(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)
-            if  status_server_start == "wait for server start":
-                if  re.search(r"server started at http://0.0.0.0:1999" , row)  is not None:
-                    status_server_start =  [date_of_entry[0],  date_of_entry[1]]
-                    continue
-            if  status_server_start != "wait for server start":
-                if counter < 4:
-                    counter = counter + 1
-                    if  len( re.findall(r"Number of programs stored in the database", row) ) > 0: 
-                        evaluate_server_start_entry(status_server_start, [ date_of_entry[0] , re.findall(r"\[(\d{1,})\]", row)[0]])
-                        status_server_start = "wait for server start"
-                        counter = 0
-                else:
-                    evaluate_server_start_entry(status_server_start, " entry ..programs are loaded.. is missing")
-                    status_server_start = "wait for server start"
-                    counter = 0
-
-
-def evaluate_server_starts():      
-    """ Evaluates the evaluation of the log file, whether all server starts are regular
-    and appends evaluation to the output file
-    """
-    list_of_errors = list()
-    status_error_server_start = "no server start error"
-    with open('output.log', 'r') as input_file:
-        for row in input_file:
-             if re.search(r"ERROR", row)  is not None:
-                status_error_server_start = "server start error occurs"
-                list_of_errors. append(re.search(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)[0])
-    if status_error_server_start == "server start error occurs":
-        with open('output.log', 'a+') as input_file:
-            input_file.write('server start error occurs on' + "\n")
-            for element in list_of_errors:
-                input_file.write("--> " + element + "\n") 
+            return sheduled_start + start_date +  programs_occurs + number_of_programs               
     else:
-       with open('output.log', 'a+') as input_file:
-           input_file.write('all server starts are regular' + "\n")  
+        if number_of_programs == "None":
+            return un_sheduled_start + start_date + programs_dont_occurs      
+        else:
+            return un_sheduled_start + start_date +  programs_occurs + number_of_programs
+  
+def search_server_start_entry(log_file):
+    """ Searches the log file for messages "..server started at.." and "..Number of programs stored.."   """
+    status_machine  = "wait for server start"
+    server_start_date = ""
+    programs_counter = 0
+    server_start_list = list() 
+    with open(log_file, 'r') as file:             
+        for row in file:
+            date_of_entry = re.match(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)
+            if  status_machine == "wait for server start":
+                if  re.search(r"server started at http://0.0.0.0:1999" , row)  is not None:
+                    server_start_date = date_of_entry[0]
+                    server_start_time = date_of_entry[1]
+                    status_machine = "wait for programs" 
+                    programs_counter = 0
+                    continue
+            if  status_machine == "wait for programs":
+                if programs_counter < 4:
+                    programs_counter = programs_counter + 1
+                    programs_entry = re.search(r"Number of programs stored in the database: \[(\d{1,})\]", row)                    
+                    if  programs_entry is not None: 
+                        number_of_programs = programs_entry[1]
+                        enty_to_evaluate = evaluate_server_start_entry(server_start_date, server_start_time, number_of_programs)
+                        server_start_list.append(enty_to_evaluate)
+                        status_machine = "wait for server start"
+                else:
+                    enty_to_evaluate = evaluate_server_start_entry(server_start_date, server_start_time,  "None")
+                    server_start_list.append(enty_to_evaluate)
+                    status_machine = "wait for server start"
+    return server_start_list
 
-
-def find_current_log_file() -> str:      
-    """ search the current log file
-    :warnings: make exit() in case of failing to find current log file
-    :return: returns current log file
-    :rtype: string
-    """
-    now = datetime.datetime.now()
-    log_file = ""
-    if now.month < 10:
-        current_log_file = "0" + str(now.month) + ".log"
-    else: 
-        current_log_file = str(now.month) + ".log"
-
-    file_list = os.listdir(".")   
-    current_log_file_status : str = " search current log file"
-    for filename in file_list: 
-        if filename == current_log_file:
-            return current_log_file
-    if  current_log_file_status == " search current log file":        
-        sys.exit('Error!') 
-
-
-def main():
-    search_server_start_entry(find_current_log_file())
-    # print(search_server_start_entry.__annotations__)  
-    evaluate_server_starts()
-    # print(find_current_log_file.__doc__)
-    # print(find_current_log_file.__annotations__)  
+def evaluate_server_starts(server_start_list, outfile):      
+    """ Evaluates whether all server starts are regular """
+    error_list = list()
+    status_error_server_start = "no server start error"
+    for row in server_start_list:
+         if re.search(r"ERROR", row)  is not None:
+            status_error_server_start = "server start error occurs"   
+            start_date = re.search(r"\d{4}-\d{2}-\d{2} (\d{2}:\d{2})", row)[0]
+            error_list. append(start_date)                       
+    if status_error_server_start == "server start error occurs":
+        server_start_list.append("errors occurs on:")        
+        for element in error_list:
+            server_start_list.append("-> " + element) 
+    else:
+           server_start_list.append('all server starts are regular' + "\n")  
+    return server_start_list
     
-
+def main():
+    month_to_check = ""
+    outfile = ""
+    if len(sys.argv) == 3:
+        month_to_check = sys.argv[1]
+        outfile = sys.argv[2]
+    else:
+       month_to_check = input("please enter input file (month.log) to check: ")  
+       outfile = input("please enter output file name: ")
+    server_start_list = search_server_start_entry(month_to_check)
+    output_list = evaluate_server_starts(server_start_list, outfile)    
+    with open(outfile, 'w') as outfile:
+        for element in output_list:
+            outfile.write(element + "\n")
+            
 if __name__ == "__main__":
     main()
