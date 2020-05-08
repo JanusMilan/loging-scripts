@@ -1,0 +1,277 @@
+2020-04-01 03:00:19,995 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - server started at http://0.0.0.0:1999
+2020-04-01 03:00:20,225 [main] session-id=[] user-id=[] robot-name=[] INFO d.f.iais.roberta.main.ServerStarter - Shutdown hook added. If the server is gracefully stopped in the future, a shutdown message is logged
+2020-04-01 03:01:07,872 [qtp917819120-17] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:01:07,877 [qtp917819120-17] session-id=[] user-id=[] robot-name=[] ERROR d.f.i.r.j.r.a.c.ClientProgramController - Exception. Error ticket: E-1
+de.fhg.iais.roberta.util.dbc.DbcKeyException: invalid init token
+	at de.fhg.iais.roberta.util.UtilForREST.validateInitToken(UtilForREST.java:93)
+	at de.fhg.iais.roberta.util.UtilForREST.handleRequestInit(UtilForREST.java:60)
+	at de.fhg.iais.roberta.javaServer.restServices.all.controller.ClientProgramController.saveProgram(ClientProgramController.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.sun.jersey.spi.container.JavaMethodInvokerFactory$1.invoke(JavaMethodInvokerFactory.java:60)
+	at com.sun.jersey.server.impl.model.method.dispatch.AbstractResourceMethodDispatchProvider$ResponseOutInvoker._dispatch(AbstractResourceMethodDispatchProvider.java:205)
+	at com.sun.jersey.server.impl.model.method.dispatch.ResourceJavaMethodDispatcher.dispatch(ResourceJavaMethodDispatcher.java:75)
+	at com.sun.jersey.server.impl.uri.rules.HttpMethodRule.accept(HttpMethodRule.java:302)
+	at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+	at com.sun.jersey.server.impl.uri.rules.ResourceClassRule.accept(ResourceClassRule.java:108)
+	at com.sun.jersey.server.impl.uri.rules.RightHandPathRule.accept(RightHandPathRule.java:147)
+	at com.sun.jersey.server.impl.uri.rules.RootResourceClassesRule.accept(RootResourceClassesRule.java:84)
+	at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1542)
+	at com.sun.jersey.server.impl.application.WebApplicationImpl._handleRequest(WebApplicationImpl.java:1473)
+	at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1419)
+	at com.sun.jersey.server.impl.application.WebApplicationImpl.handleRequest(WebApplicationImpl.java:1409)
+	at com.sun.jersey.spi.container.servlet.WebComponent.service(WebComponent.java:409)
+	at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:558)
+	at com.sun.jersey.spi.container.servlet.ServletContainer.service(ServletContainer.java:733)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at com.google.inject.servlet.ServletDefinition.doServiceImpl(ServletDefinition.java:290)
+	at com.google.inject.servlet.ServletDefinition.doService(ServletDefinition.java:280)
+	at com.google.inject.servlet.ServletDefinition.service(ServletDefinition.java:184)
+	at com.google.inject.servlet.ManagedServletPipeline.service(ManagedServletPipeline.java:89)
+	at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:85)
+	at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:120)
+	at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1701)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1668)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:502)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+	at java.lang.Thread.run(Thread.java:748)
+2020-04-01 03:01:09,248 [qtp917819120-20] session-id=[3] user-id=[-1] robot-name=[ev3lejosv1] INFO d.f.i.r.j.r.a.controller.ClientAdmin - command is: setRobot
+2020-04-01 03:07:49,337 [qtp917819120-41] session-id=[29] user-id=[-1] robot-name=[ev3c4ev3] INFO d.fhg.iais.roberta.util.ClientLogger - log entry: [[TIME]] 15 msec: run program 'NEPOprog' with configuration 'undefined'
+2020-04-01 03:07:49,337 [qtp917819120-41] session-id=[29] user-id=[-1] robot-name=[ev3c4ev3] INFO d.fhg.iais.roberta.util.ClientLogger - log entry: [[TIME]] 1 msec: simScene clicked
+2020-04-01 03:07:56,423 [qtp917819120-42] session-id=[38] user-id=[-1] robot-name=[ev3lejosv1] INFO d.f.i.r.j.r.a.controller.ClientUser - command is: getStatusText
+2020-04-01 03:07:58,828 [qtp917819120-41] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:07:58,829 [qtp917819120-450] session-id=[391] user-id=[-1] robot-name=[calliope2017NoBlue] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+[1/3] Building the NEPOprog.
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h: In member function 'virtual ble_error_t ServiceDiscovery::reset()':
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:148:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  148 |         matchingServiceUUID        = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:150:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  150 |         matchingCharacteristicUUID = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp: In function 'int main()':
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid user-defined conversion from 'const char' to 'MicroBitImage&' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:44,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:5: note: candidate is: 'MicroBitImage::MicroBitImage(ImageData*)' <near match>
+   97 |     MicroBitImage(ImageData *ptr);
+      |     ^~~~~~~~~~~~~
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:5: note:   conversion of argument 1 would be ill-formed:
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid conversion from 'char' to 'ImageData*' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+      |                                         |
+      |                                         char
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid conversion from 'char' to 'ImageData*' [-fpermissive]
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:44,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:30: note:   initializing argument 1 of 'MicroBitImage::MicroBitImage(ImageData*)'
+   97 |     MicroBitImage(ImageData *ptr);
+      |                   ~~~~~~~~~~~^~~
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: conversion to non-const reference type 'class MicroBitImage&' from rvalue of type 'MicroBitImage' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+Error in building !!!
+2020-04-01 03:08:00,493 [qtp917819120-34] session-id=[] user-id=[] robot-name=[] INFO de.fhg.iais.roberta.util.UtilForREST - got 100 many invalid init calls with tokens [6G4gV-h-_3eM]
+2020-04-01 03:08:10,606 [qtp917819120-17] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:10,607 [qtp917819120-558] session-id=[1321] user-id=[77213] robot-name=[nxt] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" +
+#----------------------------------------------------------
+# Error: Math Factor expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+2020-04-01 12:09:20,730 [qtp917819120-592] session-id=[1321] user-id=[77213] robot-name=[nxt] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" +
+#----------------------------------------------------------
+# Error: Math Factor expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+2020-04-01 03:08:10,754 [qtp917819120-42] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:10,755 [qtp917819120-602] session-id=[1436] user-id=[77775] robot-name=[calliope2017] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+[1/3] Building the NEPOprog.
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h: In member function 'virtual ble_error_t ServiceDiscovery::reset()':
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:148:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  148 |         matchingServiceUUID        = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:150:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  150 |         matchingCharacteristicUUID = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp: In function 'int main()':
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:28:16: error: assignment of read-only location '""'
+   28 |             "" += 9;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:32:16: error: assignment of read-only location '""'
+   32 |             "" += 8;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:36:16: error: assignment of read-only location '""'
+   36 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:40:16: error: assignment of read-only location '""'
+   40 |             "" += 6;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:44:16: error: assignment of read-only location '""'
+   44 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:48:16: error: assignment of read-only location '""'
+   48 |             "" += 5;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:52:16: error: assignment of read-only location '""'
+   52 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:56:16: error: assignment of read-only location '""'
+   56 |             "" += 5;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:60:16: error: assignment of read-only location '""'
+   60 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:64:16: error: assignment of read-only location '""'
+   64 |             "" += 3;
+      |             ~~~^~~~
+Error in building !!!
+2020-04-01 03:08:11,115 [qtp917819120-17] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:11,116 [qtp917819120-955] session-id=[2594] user-id=[62646] robot-name=[nano] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void setSpeedLeft(double)':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:11:22: error: '_output_ML_Richtung' was not declared in this scope
+         digitalWrite(_output_ML_Richtung, (int)0);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:12:21: error: '_output_ML_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_ML_Geschwindigkeit, (int)___SpeedLeft);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:14:22: error: '_output_ML_Richtung' was not declared in this scope
+         digitalWrite(_output_ML_Richtung, (int)1);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:15:21: error: '_output_ML_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_ML_Geschwindigkeit, (int)255 + ___SpeedLeft);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void setSpeedRight(double)':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:21:22: error: '_output_MR_Richtung' was not declared in this scope
+         digitalWrite(_output_MR_Richtung, (int)0);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:22:21: error: '_output_MR_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_MR_Geschwindigkeit, (int)___SpeedRight);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:24:22: error: '_output_MR_Richtung' was not declared in this scope
+         digitalWrite(_output_MR_Richtung, (int)1);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:25:21: error: '_output_MR_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_MR_Geschwindigkeit, (int)255 + ___SpeedRight);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void loop()':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:35: error: '_trigger_U' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                   ^~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:47: error: '_echo_U' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                               ^~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:47: note: suggested alternative: 'memchr_P'
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                               ^~~~~~~
+                                               memchr_P
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:12: error: '_getUltrasonicDistance' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+            ^~~~~~~~~~~~~~~~~~~~~~
+exit status 1
+2020-04-01 03:08:11,221 [qtp917819120-42] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:11,291 [qtp917819120-41] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:12,109 [qtp917819120-41] session-id=[] user-id=[] robot-name=[] INFO de.fhg.iais.roberta.util.UtilForREST - got 100 many invalid init calls with tokens [_3wlxY_A2L_8]
+2020-04-01 03:08:27,875 [qtp917819120-34] session-id=[] user-id=[] robot-name=[] INFO d.f.i.r.persistence.util.DbSession - rollback
+2020-04-01 03:08:48,370 [qtp917819120-14] session-id=[40] user-id=[-1] robot-name=[ev3lejosv1] INFO d.fhg.iais.roberta.util.ClientLogger - log entry: [[INFO]] init program view
+2020-04-01 03:08:48,370 [qtp917819120-14] session-id=[40] user-id=[-1] robot-name=[ev3lejosv1] INFO d.fhg.iais.roberta.util.ClientLogger - log entry: [[INFO]] init configuration view

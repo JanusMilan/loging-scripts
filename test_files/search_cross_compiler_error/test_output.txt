@@ -1,0 +1,190 @@
+========== NEXT Cross-Compiler ERROR ========== 
+2020-04-01 03:07:58,829 [qtp917819120-450] session-id=[391] user-id=[-1] robot-name=[calliope2017NoBlue] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+[1/3] Building the NEPOprog.
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h: In member function 'virtual ble_error_t ServiceDiscovery::reset()':
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:148:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  148 |         matchingServiceUUID        = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:150:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  150 |         matchingCharacteristicUUID = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp: In function 'int main()':
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid user-defined conversion from 'const char' to 'MicroBitImage&' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:44,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:5: note: candidate is: 'MicroBitImage::MicroBitImage(ImageData*)' <near match>
+   97 |     MicroBitImage(ImageData *ptr);
+      |     ^~~~~~~~~~~~~
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:5: note:   conversion of argument 1 would be ill-formed:
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid conversion from 'char' to 'ImageData*' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+      |                                         |
+      |                                         char
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: invalid conversion from 'char' to 'ImageData*' [-fpermissive]
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:44,
+                 from /tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/types/MicroBitImage.h:97:30: note:   initializing argument 1 of 'MicroBitImage::MicroBitImage(ImageData*)'
+   97 |     MicroBitImage(ImageData *ptr);
+      |                   ~~~~~~~~~~~^~~
+/tmp/openrobertaTmp/1O1-eJp-n4_F/NEPOprog/source/NEPOprog.cpp:28:41: error: conversion to non-const reference type 'class MicroBitImage&' from rvalue of type 'MicroBitImage' [-fpermissive]
+   28 |             for (MicroBitImage& image : "") {_uBit.display.print(image, 0, 0, 255, 200);_uBit.display.clear();}
+      |                                         ^~
+Error in building !!!
+========== NEXT Cross-Compiler ERROR ========== 
+2020-04-01 03:08:10,607 [qtp917819120-558] session-id=[1321] user-id=[77213] robot-name=[nxt] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" +
+#----------------------------------------------------------
+# Error: Math Factor expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+# Error: ';' expected
+File "/tmp/openrobertaTmp/VAR451YV/schwarz/target/schwarz.nxc" ; line 28
+#    "autsch" += "";
+#----------------------------------------------------------
+========== NEXT Cross-Compiler ERROR ========== 
+2020-04-01 03:08:10,755 [qtp917819120-602] session-id=[1436] user-id=[77775] robot-name=[calliope2017] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+[1/3] Building the NEPOprog.
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h: In member function 'virtual ble_error_t ServiceDiscovery::reset()':
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:148:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  148 |         matchingServiceUUID        = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattClient.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:23,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/ServiceDiscovery.h:150:77: warning: implicitly-declared 'UUID& UUID::operator=(const UUID&)' is deprecated [-Wdeprecated-copy]
+  150 |         matchingCharacteristicUUID = UUID::ShortUUIDBytes_t(BLE_UUID_UNKNOWN);
+      |                                                                             ^
+In file included from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattService.h:20,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/GattServer.h:21,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/BLE.h:22,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit-dal/inc/bluetooth/MicroBitBLEManager.h:42,
+                 from /opt/ora-cc-rsc/RobotMbed/libs2017//microbit/inc/MicroBit.h:69,
+                 from /tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:3:
+/opt/ora-cc-rsc/RobotMbed/libs2017//ble/ble/UUID.h:164:5: note: because 'UUID' has user-provided 'UUID::UUID(const UUID&)'
+  164 |     UUID(const UUID &source) {
+      |     ^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp: In function 'int main()':
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:28:16: error: assignment of read-only location '""'
+   28 |             "" += 9;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:32:16: error: assignment of read-only location '""'
+   32 |             "" += 8;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:36:16: error: assignment of read-only location '""'
+   36 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:40:16: error: assignment of read-only location '""'
+   40 |             "" += 6;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:44:16: error: assignment of read-only location '""'
+   44 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:48:16: error: assignment of read-only location '""'
+   48 |             "" += 5;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:52:16: error: assignment of read-only location '""'
+   52 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:56:16: error: assignment of read-only location '""'
+   56 |             "" += 5;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:60:16: error: assignment of read-only location '""'
+   60 |             "" += 3;
+      |             ~~~^~~~
+/tmp/openrobertaTmp/9-0RviMn0-Z_/NEPOprog/source/NEPOprog.cpp:64:16: error: assignment of read-only location '""'
+   64 |             "" += 3;
+      |             ~~~^~~~
+Error in building !!!
+========== NEXT Cross-Compiler ERROR ========== 
+2020-04-01 03:08:11,116 [qtp917819120-955] session-id=[2594] user-id=[62646] robot-name=[nano] INFO d.f.i.r.c.AbstractCompilerWorkflow - compilation of program failed with message: 
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void setSpeedLeft(double)':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:11:22: error: '_output_ML_Richtung' was not declared in this scope
+         digitalWrite(_output_ML_Richtung, (int)0);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:12:21: error: '_output_ML_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_ML_Geschwindigkeit, (int)___SpeedLeft);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:14:22: error: '_output_ML_Richtung' was not declared in this scope
+         digitalWrite(_output_ML_Richtung, (int)1);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:15:21: error: '_output_ML_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_ML_Geschwindigkeit, (int)255 + ___SpeedLeft);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void setSpeedRight(double)':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:21:22: error: '_output_MR_Richtung' was not declared in this scope
+         digitalWrite(_output_MR_Richtung, (int)0);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:22:21: error: '_output_MR_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_MR_Geschwindigkeit, (int)___SpeedRight);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:24:22: error: '_output_MR_Richtung' was not declared in this scope
+         digitalWrite(_output_MR_Richtung, (int)1);
+                      ^~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:25:21: error: '_output_MR_Geschwindigkeit' was not declared in this scope
+         analogWrite(_output_MR_Geschwindigkeit, (int)255 + ___SpeedRight);
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino: In function 'void loop()':
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:35: error: '_trigger_U' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                   ^~~~~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:47: error: '_echo_U' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                               ^~~~~~~
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:47: note: suggested alternative: 'memchr_P'
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+                                               ^~~~~~~
+                                               memchr_P
+/tmp/openrobertaTmp/CNPEY2U3/FahrenGrundlagenundUltraschallsensor/source/FahrenGrundlagenundUltraschallsensor.ino:36:12: error: '_getUltrasonicDistance' was not declared in this scope
+     if ( ( _getUltrasonicDistance(_trigger_U, _echo_U) < 20 ) && ( _getUltrasonicDistance(_trigger_U, _echo_U) > 10 ) ) {
+            ^~~~~~~~~~~~~~~~~~~~~~
+exit status 1
