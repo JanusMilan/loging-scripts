@@ -1,0 +1,20 @@
+server started UNSHEDULED at: 2020-04-01 04:00; with number of programs entry283384
+server started at: 2020-04-02 03:00: ERROR no number of programs entry
+server started UNSHEDULED at: 2020-04-03 04:00: ERROR no number of programs entry
+server started at: 2020-04-04 03:00; with number of programs entry284419
+server started at: 2020-04-05 03:00; with number of programs entry284568
+server started at: 2020-04-06 03:00; with number of programs entry284727
+server started at: 2020-04-07 03:00; with number of programs entry285036
+server started UNSHEDULED at: 2020-04-08 04:00; with number of programs entry285371
+server started at: 2020-04-09 03:00; with number of programs entry285666
+server started UNSHEDULED at: 2020-04-10 04:00; with number of programs entry286186
+server started at: 2020-04-11 03:00: ERROR no number of programs entry
+server started at: 2020-04-12 03:00; with number of programs entry286553
+server started at: 2020-04-13 03:00; with number of programs entry286814
+server started UNSHEDULED at: 2020-04-14 04:00: ERROR no number of programs entry
+server started at: 2020-04-15 03:00; with number of programs entry287629
+errors occurs on:
+-> 2020-04-02 03:00
+-> 2020-04-03 04:00
+-> 2020-04-11 03:00
+-> 2020-04-14 04:00
