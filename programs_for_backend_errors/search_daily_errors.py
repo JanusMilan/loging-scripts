@@ -57,6 +57,8 @@ def search_error_entries(input_file, output_file, day_to_check_errors):
             else:
                 raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))    
     outfile.close()
+    
+    
  
 
 def main():
@@ -76,6 +78,10 @@ def main():
         day_to_check_errors = sys.argv[3]
     except IndexError:
         sys.exit("day to check parameter missing") 
+
+    # infile = "test_input_daily-errors.txt"
+    # outfile = "test_output_daily-errors.txt"
+    # day_to_check_errors = "01"
 
     search_error_entries(infile, outfile, day_to_check_errors)
  
