@@ -6,4 +6,4 @@ Folder contains programs
 
 How to do the tests
 --> the test input and test output files are in the subdirectory "test_files"
---> each pogarmm has its own directory in the "test_files" which contains the concrete test files und test instructions
+--> each pogaram has its own directory in the "test_files" which contains the concrete test files und test instructions
