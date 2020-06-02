@@ -1,13 +1,17 @@
+How to run a program in the console: 
+→ python3 search_all_monthly_frontend_entries.py test_infile_frontend_entries.txt test_outfile_frontend_entries.txt
 
-how to run program in the console: 
---> python3 search_all_monthly_frontend_errors.py test_infile_frontend_error.txt front_end_error_file.txt 
-
-evaluation of the test
---> input file "test_infile_frontend_error.txt" has 131 lines
-	--> one line (1. line) with error "jsToAppInterface >invalid webview type caused by" which is in evaluation to ignore 
-	--> 8 lines with non-error entry "[[TIME]] 89 msec: tabConfiguration clicked"
-    --> so output file should have 122 with error entries\lines 
---> output file 
-	--> has 122 error entries\lines 
-    --> the correct line number appears before each message
---> test is successful
+Test input file
+→input file "test_infile_frontend_entries.txt" has 10 lines
+→line 1 is Frontend [INFO] entry which is to be ignored 
+→line 2 is Frontend [INFO] entry which is to be ignored 
+→lines 3 and 4 are Frontend [INFO] entries which are not to be ignored and are part of the output file
+→line 5 is Frontend [ERROR] entry which is to be ignored 
+→lines 6 and 7 are Frontend [ERROR] entries which are not to be ignored and are part of the output file
+→line 8 is Frontend [TIME] which entry is not to be ignored and it is part of the output file
+→lines 9 and 10 are Backend [ERROR] entries which are to be ignored
+	
+Evaluation of the test
+→5 of 10 entries from input file are to be ignored 
+→output file hat 5 lines with the right entries, what is correct
+→the correct line number appears before each message
