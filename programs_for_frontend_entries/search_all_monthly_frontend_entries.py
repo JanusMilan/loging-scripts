@@ -2,12 +2,14 @@ import re
 import sys
 from enum import Enum
 
+
 """ list with entries to ignore """
 entries_to_ignore =  [
         ".*jsToAppInterface >invalid webview type caused by: \[object Object\]",
         ".*init .* view",
         ".*init .* delete"
 ]
+
 
 """ list with compiled pattern of entries to ignore """
 pattern_entries_to_ignore = []
@@ -26,7 +28,7 @@ def search_client_logger_entries(infile, outfile):
     :param: infile: .log file with data to  evaluate 
     :param: outfile: output file for the evalation data
     """
-    output_file = open(outfile, 'w+')
+    output_file = open(outfile, 'x')
     with open(infile, 'r') as file:  
         for line_number,line in enumerate(file):
             line_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(INFO d.fhg.iais.roberta.util.ClientLogger - log entry: (\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[TIME\]\] .* msec:|\[\[ERR \]\]|\[\[INFO\]\])) (.*)"
@@ -48,19 +50,20 @@ def search_client_logger_entries(infile, outfile):
                 continue
     output_file.close() 
     
+    
 def main():
     """ main function serves for process control 
     """
-    infile = "test_file.txt"
-    outfile = "TEST.txt"
-    # try:
-        # infile = sys.argv[1]
-    # except IndexError:
-        # sys.exit( "input file parameter missing")
-    # try:
-        # outfile = sys.argv[2]
-    # except IndexError:
-        # sys.exit("output file parameter missing")
+    infile = ""
+    outfile = ""
+    try:
+        infile = sys.argv[1]
+    except IndexError:
+        sys.exit( "input file parameter missing")
+    try:
+        outfile = sys.argv[2]
+    except IndexError:
+        sys.exit("output file parameter missing")
     search_client_logger_entries(infile, outfile)    
 
 
