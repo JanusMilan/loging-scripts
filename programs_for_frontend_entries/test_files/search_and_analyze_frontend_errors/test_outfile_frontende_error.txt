@@ -1,0 +1,2 @@
+.*robot choosen in start popup, then EXCEPTION: TypeError: Cannot read property 'info' of undefined[7]
+.*show source code of program '.*', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined[6]
