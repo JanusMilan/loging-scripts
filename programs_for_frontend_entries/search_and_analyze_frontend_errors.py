@@ -3,8 +3,10 @@ import sys
 from enum import Enum
 from known_frontend_errors import FrontendErrors
 
+
 known_frontend_errors = FrontendErrors.known_frontend_errors
-# __init__.py
+
+
 class MachineState(Enum):
     """ Enum-Class serves for implementation of state machine status """
     search_error = 1
@@ -23,6 +25,7 @@ def prepare_string_for_regex(string):
     string = string.replace('$', '\$')
     return string
 
+
 def analyze_error(infile):  
     """ for analyzing the monthly errors: Assign errors to error group and error type
         :param: infile:  
@@ -30,14 +33,15 @@ def analyze_error(infile):
     with open(infile, 'r') as file: 
         for line in file:
             machine_state = MachineState.search_error
-            error = re.split('::',line)   
-            for error_group,group_value  in known_frontend_errors.items(): 
-                for error_type,value in group_value.items():                      
-                    if re.match(error_group + error_type, error[1]) is not None:   
-                        known_frontend_errors[error_group][error_type].append(int(error[0]))   
-                        machine_state = MachineState.found_error                            
+            error_line = re.split('::',line)               
+            line_pattern = r".*(\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[ERR \]\]).*"
+            for error_group,group_value  in known_frontend_errors.items():     
+                for error_subgroup in group_value:                      
+                    if re.match(line_pattern + error_group + error_subgroup, error_line[1]) is not None:   
+                        known_frontend_errors[error_group][error_subgroup].append(int(error_line[0]))   
+                        machine_state = MachineState.found_error                       
                         break
-                    else:                   
+                    else:                                 
                         machine_state = MachineState.search_error
                         continue
                 if  machine_state == MachineState.found_error:
@@ -48,44 +52,57 @@ def analyze_error(infile):
                     raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))
             if machine_state == MachineState.search_error:           
                 error_group = "NEW ERROR TYPE: "           
-                error_type = prepare_string_for_regex(error[1].rstrip())                
-                if known_frontend_errors[error_group].get(error_type) is None:
-                    known_frontend_errors[error_group].update({error_type : []})  
-                    known_frontend_errors[error_group][error_type].append(int(error[0]))
+                error_subgroup = prepare_string_for_regex(error_line[1].rstrip()) 
+                if "\[\[ERR \]\] \[\[TIME\]\]" in error_subgroup:
+                    error_subgroup = re.split("\d{0,} msec: ", error_subgroup)
+                else:    
+                    if ": \[\[ERR \]\] " in error_subgroup: 
+                       error_subgroup = error_subgroup.split(": \[\[ERR \]\] ")        
+                    else:
+                        continue
+                if re.match(line_pattern, error_line[1]) is not None:
+                    if known_frontend_errors[error_group].get(error_subgroup[1]) is None:                    
+                        known_frontend_errors[error_group].update({error_subgroup[1] : []})  
+                        known_frontend_errors[error_group][error_subgroup[1]].append(int(error_line[0]))
+                    else:
+                        known_frontend_errors[error_group][error_subgroup[1]].append(int(error_line[0]))   
                 else:
-                    known_frontend_errors[error_group][error_type].append(int(error[0]))                              
+                    continue
             elif machine_state == MachineState.found_error:
                 continue
             else:
                 raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))     
                     
+                    
 def write_output_file(outfile):    
-    """ for formating of output and for output into outputfile
+    """ for formating of output and for output of frontend errors into outputfile
         :param: outfile: output file for the evalation data
     """                 
     with open(outfile, 'w+') as file: 
         for error_group,value  in known_frontend_errors.items():
-            for error, error_enumeration in value.items():    
-                number_of_errors = len(known_frontend_errors[error_group][error])
-                if  number_of_errors < 5:
-                    file.write(error_group +  error  + str(known_frontend_errors[error_group][error]) + '\n') 
+            for error_subgroup in value:                
+                number_of_errors = len(known_frontend_errors[error_group][error_subgroup])
+                if 0 < number_of_errors < 10:
+                    file.write(error_group +  error_subgroup  + str(known_frontend_errors[error_group][error_subgroup]) + '\n') 
+                elif number_of_errors  >= 10:                                    
+                    file.write(error_group +  error_subgroup  + ": [number of errors: " + str(number_of_errors) + ']\n')  
                 else:
-                    file.write(error_group +  error  + ": [number of errors: " + str(number_of_errors) + ']\n')       
-                
+                    continue
+
+    
 def main():
-    """ main function serves for process control 
-    how to run program: python3 search_and_analyze_frontend_errors.py test_infile_frontende_error.txt test_outfile_frontende_error.txt    
+    """ main function serves for process control     
     """
-    infile = "front_end_error_file.txt"    
-    outfile = "TEST.txt"
-    # try:
-        # infile = sys.argv[1]
-    # except IndexError:
-        # sys.exit( "input file parameter missing")
-    # try:
-        # outfile = sys.argv[2]
-    # except IndexError:
-        # sys.exit("output file parameter missing")
+    infile = ""    
+    outfile = ""
+    try:
+        infile = sys.argv[1]
+    except IndexError:
+        sys.exit( "input file parameter missing")
+    try:
+        outfile = sys.argv[2]
+    except IndexError:
+        sys.exit("output file parameter missing")
     analyze_error(infile)
     write_output_file(outfile)    
     

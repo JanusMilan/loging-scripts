@@ -28,11 +28,11 @@ def search_client_logger_entries(infile, outfile):
     :param: infile: .log file with data to  evaluate 
     :param: outfile: output file for the evalation data
     """
-    output_file = open(outfile, 'x')
+    output_file = open(outfile, 'w+')
     with open(infile, 'r') as file:  
         for line_number,line in enumerate(file):
             line_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(INFO d.fhg.iais.roberta.util.ClientLogger - log entry: (\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[TIME\]\] .* msec:|\[\[ERR \]\]|\[\[INFO\]\])) (.*)"
-            client_logger_line = re.compile(line_pattern).match(line)           
+            client_logger_line = re.compile(line_pattern).match(line)
             if client_logger_line is not None:
                 machine_state = MachineState.search_entry_to_ignore
                 for pattern in pattern_entries_to_ignore: 
