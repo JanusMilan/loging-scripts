@@ -1,5 +1,5 @@
 How to run a program in the console: 
-→ python3 search_all_monthly_frontend_entries.py test_infile_frontend_entries.txt test_outfile_frontend_entries.txt
+→ python3 extract_monthly_frontend_entries.py test_infile_frontend_entries.txt test_outfile_frontend_entries.txt
 
 Test input file
 →input file "test_infile_frontend_entries.txt" has 10 lines
