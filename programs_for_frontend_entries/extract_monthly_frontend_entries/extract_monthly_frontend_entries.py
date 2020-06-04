@@ -7,7 +7,9 @@ from enum import Enum
 entries_to_ignore =  [
         ".*jsToAppInterface >invalid webview type caused by: \[object Object\]",
         ".*init .* view",
-        ".*init .* delete"
+        ".*init .* delete",
+        ".*no Android Webview.*",
+        ".*no IOS Webview.*"
 ]
 
 
@@ -28,11 +30,13 @@ def search_client_logger_entries(infile, outfile):
     :param: infile: .log file with data to  evaluate 
     :param: outfile: output file for the evalation data
     """
+    line_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(INFO d.fhg.iais.roberta.util.ClientLogger - log entry: (\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[TIME\]\] .* msec:|\[\[ERR \]\]|\[\[INFO\]\])) (.*)"
+    client_logger_regex = re.compile(line_pattern)
     output_file = open(outfile, 'w+')
     with open(infile, 'r') as file:  
         for line_number,line in enumerate(file):
             line_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*(INFO d.fhg.iais.roberta.util.ClientLogger - log entry: (\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[TIME\]\] .* msec:|\[\[ERR \]\]|\[\[INFO\]\])) (.*)"
-            client_logger_line = re.compile(line_pattern).match(line)
+            client_logger_line = client_logger_regex.match(line)
             if client_logger_line is not None:
                 machine_state = MachineState.search_entry_to_ignore
                 for pattern in pattern_entries_to_ignore: 
@@ -45,7 +49,7 @@ def search_client_logger_entries(infile, outfile):
                 if machine_state == MachineState.found_entry_to_ignore: 
                     continue
                 else:                    
-                    output_file.write(str(line_number + 1) + "::" + client_logger_line[1]  + ": " + client_logger_line[2]  + " " + client_logger_line[4] + "\n")
+                    output_file.write(str(line_number + 1) + "::" + client_logger_line[1]  + ": " + client_logger_line[3]  + " " + client_logger_line[4] + "\n")               
             else:
                 continue
     output_file.close() 
