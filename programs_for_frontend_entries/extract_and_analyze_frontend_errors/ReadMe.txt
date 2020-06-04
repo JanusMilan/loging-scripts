@@ -1,6 +1,4 @@
 How to test program
-→ Before you run this program you have to run the program "extract_monthly_frontend_entries", 
-    → because its "test_outfile_frontend_entries.txt" output file is input file of current program
 →python3 extract_and_analyze_frontend_errors.py test_outfile_frontend_entries.txt test_outfile_frontend_errors.txt 
 
 
