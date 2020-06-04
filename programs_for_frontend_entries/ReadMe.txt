@@ -6,5 +6,4 @@ Folder contains subfolder with programs
 
 How to do the tests
 → each program has its own directory which contains the concrete test files, test instructions and programs
-→ Before you run extract_and_analyze_frontend_errors.py program you have to run the program "extract_monthly_frontend_entries", 
-→ because its "test_outfile_frontend_entries.txt" output file is input file of current program
+→ Before you run "extract_and_analyze_frontend_errors.py" program you have to run the program "extract_monthly_frontend_entries",because its "test_outfile_frontend_entries.txt" output file is input file of current program
