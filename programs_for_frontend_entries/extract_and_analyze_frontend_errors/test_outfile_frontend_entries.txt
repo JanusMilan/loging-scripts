@@ -1,0 +1,22 @@
+3::2020-04-01 09:19:59: [[INFO]] runOnBrick from blockly button
+25::2020-04-01 00:01:53: [[INFO]] init gui state
+36::2020-04-01 09:23:10: [[ERR ]] [[TIME]] 137 msec: show source code of program 'NEPOprog', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined
+58::2020-04-15 09:27:34: [[TIME]] 89 msec: tabConfiguration clicked
+68::2020-04-01 00:01:18: [[ERR ]] Client connection issue: 0
+69::2020-04-01 00:01:18: [[ERR ]] Client connection issue: 200
+78::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+85::2020-04-01 00:01:53: [[INFO]] init gui state
+88::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+91::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+92::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+93::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+98::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+99::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+192::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+193::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+292::2020-04-11 13:33:01: [[ERR ]] [[TIME]] 48 msec: load gallery list, then EXCEPTION: out of memory
+396::2020-04-01 09:23:10: [[ERR ]] [[TIME]] 137 msec: show source code of program 'NEPOprog', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined
+496::2020-04-07 11:04:23: [[ERR ]] [[TIME]] 2 msec: simScene clicked, then EXCEPTION: TypeError: robots[0] is undefined
+526::2020-04-07 11:04:23: [[ERR ]] [[TIME]] 2 msec: simScene clicked, then EXCEPTION: TypeError: robots[0] is undefined
+626::2020-04-09 08:21:34: [[ERR ]] [[TIME]] 2 msec: simScene clicked, then EXCEPTION: TypeError: undefined is not an object (evaluating 'robots[0].debug')
+768::2020-04-01 00:01:18: [[ERR ]] Client connection issue: 460

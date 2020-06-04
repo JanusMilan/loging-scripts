@@ -53,10 +53,10 @@ def analyze_error(infile):
             if machine_state == MachineState.search_error:           
                 error_group = "NEW ERROR TYPE: "           
                 error_subgroup = prepare_string_for_regex(error_line[1].rstrip()) 
-                if "\[\[ERR \]\] \[\[TIME\]\]" in error_subgroup:
+                if ": \[\[ERR \]\] \[\[TIME\]\]" in error_subgroup:
                     error_subgroup = re.split("\d{0,} msec: ", error_subgroup)
                 else:    
-                    if ": \[\[ERR \]\] " in error_subgroup: 
+                    if ": \[\[ERR \]\]" in error_subgroup: 
                        error_subgroup = error_subgroup.split(": \[\[ERR \]\] ")        
                     else:
                         continue

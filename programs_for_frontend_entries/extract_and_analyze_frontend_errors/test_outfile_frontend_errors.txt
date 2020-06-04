@@ -1,0 +1,7 @@
+.*load gallery list, then EXCEPTION: out of memory: [number of errors: 10]
+.*show source code of program '.*', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined[36, 396]
+.*Client connection issue: 0[68]
+.*Client connection issue: 200[69]
+NEW ERROR TYPE: simScene clicked, then EXCEPTION: TypeError: robots\[0\] is undefined[496, 526]
+NEW ERROR TYPE: simScene clicked, then EXCEPTION: TypeError: undefined is not an object \(evaluating 'robots\[0\].debug'\)[626]
+NEW ERROR TYPE: Client connection issue: 460[768]
