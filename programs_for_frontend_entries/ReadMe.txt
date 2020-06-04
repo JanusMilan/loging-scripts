@@ -5,4 +5,4 @@ Folder contains subfolder with programs
 → "known_frontend_errors.py" with known errors, which is used by the program "extract_and_analyze_frontend_errors.py"
 
 How to do the tests
-→ each program has its own directory in the "test_files" which contains the concrete test files, test instructions and programs
+→ each program has its own directory which contains the concrete test files, test instructions and programs
