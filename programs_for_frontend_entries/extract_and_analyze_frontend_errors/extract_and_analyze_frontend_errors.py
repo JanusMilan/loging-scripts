@@ -27,7 +27,7 @@ def prepare_string_for_regex(string):
     
 
 def remove_regex_escapes(string):  
-    """ for removing egex escapes out of the strings for the regex syntax
+    """ for removing regex escapes out of the strings for the regex syntax
         :param: string: string to process
     """
     string = string.replace("\[", "[") 
