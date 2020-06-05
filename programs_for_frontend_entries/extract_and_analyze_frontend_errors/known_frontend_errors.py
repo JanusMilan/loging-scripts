@@ -1,10 +1,6 @@
 class FrontendErrors:
     """ includes all previously known types of  frontend errors"""
     known_frontend_errors =  {
-            ".*ReferenceError:" :
-                {
-                    " OpenRoberta is not defined" : []     
-                },        
             ".*fn3 caught an EXCEPTION:" :
                 {
                     " TypeError: Cannot read property 'reset' of undefined" : [],
@@ -49,7 +45,7 @@ class FrontendErrors:
                     " TypeError: o\[i\].slick is undefined" : [],
                     " TypeError: Não é possível obter a propriedade 'info' de uma referência não definida ou nula" : []
                  },
-            ".*set robot '(.)*', then EXCEPTION:" :
+            ".*set robot '(.*)', then EXCEPTION:" :
                 {   
                     " TypeError: Cannot read property 'selector' of undefined" : [],
                     " TypeError: W.stepData is undefined" : [],

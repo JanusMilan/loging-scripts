@@ -24,7 +24,20 @@ def prepare_string_for_regex(string):
     string = string.replace("\"", "\\\"")    
     string = string.replace('$', '\$')
     return string
+    
 
+def remove_regex_escapes(string):  
+    """ for removing egex escapes out of the strings for the regex syntax
+        :param: string: string to process
+    """
+    string = string.replace("\[", "[") 
+    string = string.replace("\]", "]")     
+    string = string.replace("\(", "(") 
+    string = string.replace("\)", ")") 
+    string = string.replace("\\\"", "\"")    
+    string = string.replace('\$', '$')
+    string = string.replace('.*', '')
+    return string        
 
 def analyze_error(infile):  
     """ for analyzing the monthly errors: Assign errors to error group and error type
@@ -51,28 +64,29 @@ def analyze_error(infile):
                 else:
                     raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))
             if machine_state == MachineState.search_error:           
-                error_group = "NEW ERROR TYPE: "           
-                error_subgroup = prepare_string_for_regex(error_line[1].rstrip()) 
-                if ": \[\[ERR \]\] \[\[TIME\]\]" in error_subgroup:
-                    error_subgroup = re.split("\d{0,} msec: ", error_subgroup)
+                error_group = "NEW ERROR TYPE: "   
+                error_subgroup = error_line[1].rstrip()
+                error_subgroup_regex = prepare_string_for_regex(error_subgroup) 
+                if ": \[\[ERR \]\] \[\[TIME\]\]" in error_subgroup_regex: 
+                    error_subgroup_regex = re.split("\d{0,} msec: ", error_subgroup_regex)
                 else:    
-                    if ": \[\[ERR \]\]" in error_subgroup: 
-                       error_subgroup = error_subgroup.split(": \[\[ERR \]\] ")        
+                    if ": \[\[ERR \]\]" in error_subgroup_regex: 
+                       error_subgroup_regex = error_subgroup_regex.split(": \[\[ERR \]\] ")        
                     else:
                         continue
                 if re.match(line_pattern, error_line[1]) is not None:
-                    if known_frontend_errors[error_group].get(error_subgroup[1]) is None:                    
-                        known_frontend_errors[error_group].update({error_subgroup[1] : []})  
-                        known_frontend_errors[error_group][error_subgroup[1]].append(int(error_line[0]))
+                    if known_frontend_errors[error_group].get(error_subgroup_regex[1]) is None:                    
+                        known_frontend_errors[error_group].update({error_subgroup_regex[1] : []})  
+                        known_frontend_errors[error_group][error_subgroup_regex[1]].append(int(error_line[0]))
                     else:
-                        known_frontend_errors[error_group][error_subgroup[1]].append(int(error_line[0]))   
+                        known_frontend_errors[error_group][error_subgroup_regex[1]].append(int(error_line[0]))   
                 else:
                     continue
             elif machine_state == MachineState.found_error:
                 continue
             else:
                 raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))     
-                    
+
                     
 def write_output_file(outfile):    
     """ for formating of output and for output of frontend errors into outputfile
@@ -80,14 +94,16 @@ def write_output_file(outfile):
     """                 
     with open(outfile, 'w+') as file: 
         for error_group,value  in known_frontend_errors.items():
+            file.write(remove_regex_escapes(error_group) + '\n')            
             for error_subgroup in value:                
                 number_of_errors = len(known_frontend_errors[error_group][error_subgroup])
-                if 0 < number_of_errors < 10:
-                    file.write(error_group +  error_subgroup  + str(known_frontend_errors[error_group][error_subgroup]) + '\n') 
+                if 0 < number_of_errors < 10:  
+                    file.write("          " + remove_regex_escapes(error_subgroup)  + str(known_frontend_errors[error_group][error_subgroup]) + '\n')                       
                 elif number_of_errors  >= 10:                                    
-                    file.write(error_group +  error_subgroup  + ": [number of errors: " + str(number_of_errors) + ']\n')  
+                    first_error_appearance = known_frontend_errors[error_group][error_subgroup][0]
+                    file.write("          "+remove_regex_escapes(error_subgroup) + ": [number of errors: "+str(number_of_errors)+", first error appearance:"+str(first_error_appearance)+']\n')                      
                 else:
-                    continue
+                    continue                    
 
     
 def main():
