@@ -27,7 +27,7 @@ def prepare_string_for_regex(string):
     
 
 def remove_regex_escapes(string):  
-    """ for removing regex escapes out of the strings for the regex syntax
+    """ for removing regex escapes out of the strings
         :param: string: string to process
     """
     string = string.replace("\[", "[") 
@@ -41,7 +41,7 @@ def remove_regex_escapes(string):
 
 def analyze_error(infile):  
     """ for analyzing the monthly errors: Assign errors to error group and error type
-        :param: infile:  
+        :param: infile: file to analyze
     """       
     with open(infile, 'r') as file: 
         for line in file:
