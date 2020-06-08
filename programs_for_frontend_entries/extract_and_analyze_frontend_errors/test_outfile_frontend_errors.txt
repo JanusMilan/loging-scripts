@@ -6,23 +6,23 @@ tabConfiguration clicked, then EXCEPTION:
 robot choosen in start popup, then EXCEPTION:
 set robot '()', then EXCEPTION:
 load gallery list, then EXCEPTION:
-           out of memory: [number of errors: 10, first error appearance:78]
+            out of memory : [number of errors: 10 , first error appearance: 78]
 gallery clicked, then EXCEPTION:
 got user info from server, then EXCEPTION:
 clear user, then EXCEPTION:
 show source code of program '', then EXCEPTION:
-           TypeError: Cannot read property 'selector' of undefined[36, 396]
+            TypeError: Cannot read property 'selector' of undefined [36, 396]
 run program '' with configuration '', then EXCEPTION:
 simScene clicked, then EXCEPTION:
 import clicked, then EXCEPTION:
 Client connection issue:
-           0[68]
-           200[69]
+            0 [68]
+            200 [69]
 program edit clicked, then EXCEPTION:
 simResetPose clicked, then EXCEPTION:
 sim clicked, then EXCEPTION:
 head navigation menu item clicked, then EXCEPTION:
 NEW ERROR TYPE: 
-          simScene clicked, then EXCEPTION: TypeError: robots[0] is undefined[496, 526]
-          simScene clicked, then EXCEPTION: TypeError: undefined is not an object (evaluating 'robots[0].debug')[626]
-          Client connection issue: 460[768]
+           simScene clicked, then EXCEPTION: TypeError: robots[0] is undefined [496, 526]
+           simScene clicked, then EXCEPTION: TypeError: undefined is not an object (evaluating 'robots[0].debug') [626]
+           Client connection issue: 460 [768]

@@ -1,5 +1,5 @@
-3::2020-04-01 09:19:59: [[INFO]] runOnBrick from blockly button
-4::2020-04-01 09:20:59: [[INFO]] run NEPOprogon brick
-6::2020-04-01 09:23:10: [[ERR ]] [[TIME]] 137 msec: show source code of program 'NEPOprog', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined
-7::2020-04-01 09:26:22: [[ERR ]] [[TIME]] 60 msec: robot choosen in start popup, then EXCEPTION: TypeError: Cannot read property 'info' of undefined
-8::2020-04-15 09:27:34: [[TIME]] 89 msec: tabConfiguration clicked
+00000003::2020-04-01 09:19:59: [[INFO]] runOnBrick from blockly button
+00000004::2020-04-01 09:20:59: [[INFO]] run NEPOprogon brick
+00000006::2020-04-01 09:23:10: [[ERR ]] [[TIME]] 137 msec: show source code of program 'NEPOprog', then EXCEPTION: TypeError: Cannot read property 'selector' of undefined
+00000007::2020-04-01 09:26:22: [[ERR ]] [[TIME]] 60 msec: robot choosen in start popup, then EXCEPTION: TypeError: Cannot read property 'info' of undefined
+00000008::2020-04-15 09:27:34: [[TIME]] 89 msec: tabConfiguration clicked
