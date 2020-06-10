@@ -11,11 +11,19 @@ class FrontendErrors:
                     " Error: Syntax error, unrecognized expression: \#escape\[object Object\]" : [],
                     " TypeError: Cannot read property 'replaceState' of undefined" : []
                 },
+                
             ".*appToJsInterface" :
                 {
-                    " >TypeError: undefined is not an object .*" : [],
-                    " >invalid arguments caused by: .*" : []            
+                    " >TypeError: undefined is not an object \(evaluating 'theWedoU\[this.finalName\(data.sensor\)] = data.state'\) caused by: \{\"type\":\"update\",\"sensor\":\"button\",\"brickid\":\".*\",\"state\":\"false\",\"target\":\"wedo\"\}" : [], 
+                    " >TypeError: undefined is not an object \(evaluating 'theWedoU\[this.finalName\(data.sensor\)\] = data.state'\) caused by: \{\"type\":.*\}" : [], 
+                    " >TypeError: undefined is not an object \(evaluating 'theWedoU\[this.finalName\(data.sensor\)\] = data.state'\) caused by: \{\"sensor\":\"button\",\"state\":\"false\",\"target\":\"wedo\",\"brickid\":\".*\",\"type\":\"update\"\} " : [],  
+                    " >TypeError: undefined is not an object \(evaluating 'theWedoU\[this.finalName\(data.sensor\)\] = data.state'\) caused by: \{\"sensor\":.*\}" : [], 
+                    " >invalid arguments caused by: {\"type\":\"connect\",\"state\":\"disconnected\",\"brickid\":\".*\",\"target\":\"wedo\"\}" : [],                     
+                    " >invalid arguments caused by: {\"type\":.*\}" : [], 
+                    " >invalid arguments caused by: {\"target\":\"wedo\",\"type\":\"update\",\"sensor\":\"Motion Sensor\",\"brickid\":\".*\",\"state\":\"9.0\",\"id\":\"2\"\} " : [],      
+                    " >invalid arguments caused by: {\"target\":.*\}" : [] 
                 },
+                
             ".*jsToAppInterface" :
                 {
                     " >Error: Java exception was raised during method invocation caused by: \[object Object\]" : []
@@ -114,8 +122,8 @@ class FrontendErrors:
                     " SyntaxError: JSON Parse error: Unexpected identifier \"undefined\"" : [],
                     " TypeError: Unable to get property 'replaceState' of undefined or null reference" : [],
                     " TypeError: Не удалось получить свойство \"replaceState\" ссылки, значение которой не определено или является NULL": [],
-                    " Error: Mismatched anonymous define\(\) module: function\(\){\"use strict\".*" : [],
-                    " Error: Mismatched anonymous define\(\) module: function\(t\){\"use strict\".*" : [],
+                    " Error: Mismatched anonymous define\(\) module: function\(\){\"use strict\";var e=function\(t\)\{if\(!\(this instanceof e\)\)return new e\(t\);var i=\{swfContainerId:\"fingerprintjs2\",swfPath:\"flash/compiled/FontList.swf\".*" : [],
+                    " Error: Mismatched anonymous define\(\) module: function\(t\){\"use strict\";function r\(t\)\{var r=t.length;if\(r%4>0\)throw new Error\(\"Invalid string. Length must be a multiple of 4\"\);.*" : [],                    
                     " Error: Permission denied to access property \"apply\"" : [],
                     " TypeError: null is not an object \(evaluating 'this.\$backdrop.css'\)" : [],
                     " TypeError: Cannot read property 'modes' of undefined" : []  
@@ -163,9 +171,5 @@ class FrontendErrors:
             ".*head navigation menu item clicked, then EXCEPTION:" :
                 {  
                     " Error: Error no especificado."  : []
-                 },
-             "NEW ERROR TYPE: " :
-                {  
-                   
-                 }            
+                 }  
         }

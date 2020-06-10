@@ -2,7 +2,6 @@ import re
 import sys 
 from enum import Enum
 from known_frontend_errors import FrontendErrors
-from copy import deepcopy
 
 
 class MachineState(Enum):
@@ -13,7 +12,7 @@ class MachineState(Enum):
 
 def prepare_string_for_regex(string):  
     """ for prepare of the strings for the regex syntax for processes of filtering
-        :param: string: string to prepare
+        :param: string: string to prepare for regex syntax
     """
     string = string.replace("[", "\[") 
     string = string.replace("]", "\]") 
@@ -38,31 +37,29 @@ def remove_regex_escapes(string):
     return string        
    
 
-def compile_regex_dict(known_frontend_errors_copy):  
+def compile_regex_dict(known_frontend_errors):  
     """ for constructing of dictionary with compiled regexes of known frontend errors as value
-   :param: known_frontend_errors_copy: deepcopy of dictionary "known_frontend_errors"
+   :param: known_frontend_errors: dictionary of the errors, which are already registered
     """   
-    line_pattern = r".*(\[\[ERR \]\] \[\[TIME\]\] .* msec:|\[\[ERR \]\]).*"
-    for error_group,group_value  in known_frontend_errors_copy.items():     
+    for error_group,group_value  in known_frontend_errors.items():     
         for error_subgroup, values in group_value.items():      
-            known_frontend_errors_copy[error_group][error_subgroup] = re.compile(line_pattern + error_group + error_subgroup)               
-    return known_frontend_errors_copy       
+            known_frontend_errors[error_group][error_subgroup].append(re.compile(error_group + error_subgroup))            
+    return known_frontend_errors       
  
  
-def search_known_error(known_frontend_errors, client_logger_error_regex_dict, line):  
+def search_known_error(known_frontend_errors, line):  
     """ for analyzing at this time known monthly errors: 
    - registers the line where the error type is occurred, if line contain known error
    :param: known_frontend_errors: dictionary of the errors, which are already registered
-   :client_logger_error_regex_dict:  dictionary with compiled regexes of monthly frontend errors, which are already registered in dictionary  "known_frontend_errors"
    :line: actual line of the input file to be processed
     """   
     machine_state = MachineState.search_error
     for error_group,group_value  in known_frontend_errors.items():     
         for error_subgroup, values in group_value.items():    
-            regex = client_logger_error_regex_dict[error_group][error_subgroup]
-            if regex.match(line[1]) is not None:     
+            regex = known_frontend_errors[error_group][error_subgroup][0]
+            if regex.match(line[1]) is not None:   
                 known_frontend_errors[error_group][error_subgroup].append(int(line[0]))
-                machine_state = MachineState.found_error                       
+                machine_state = MachineState.found_error        
                 return MachineState.found_error
             else:
                 continue
@@ -72,28 +69,27 @@ def search_known_error(known_frontend_errors, client_logger_error_regex_dict, li
         raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))
 
 
-def search_unknown_error(known_frontend_errors, client_logger_error_regex_dict, line):
+def search_unknown_error(known_frontend_errors, line):
     """ for analyzing at this time unknown monthly errors: 
     - extends the dictionary  "known_frontend_errors" with new error type, if line contain unknown error for the first time 
     - registers the line where the new error type is occurred
    :param: known_frontend_errors: dictionary with the errors, which are already registered
-   :client_logger_error_regex_dict:  dictionary of compiled regexes of monthly frontend errors, which are already registered in dictionary  "known_frontend_errors"
    :line: actual line of the input file to be processed
-    """   
-    error_group = "NEW ERROR TYPE: "      
-    error_subgroup_regex = prepare_string_for_regex(line[1].rstrip()) 
-    if ": \[\[ERR \]\] \[\[TIME\]\]" in error_subgroup_regex:              
-        error_subgroup_regex = re.split("\d{0,} msec: ", error_subgroup_regex) 
-    elif ": \[\[ERR \]\]" in error_subgroup_regex: 
-           error_subgroup_regex = error_subgroup_regex.split(": \[\[ERR \]\] ")  
+    """      
+    line_prepared_for_regex = line[1].rstrip()
+    if ": [[ERR ]] [[TIME]]" in line_prepared_for_regex:          
+        line_prepared_for_regex = re.split("\d{0,} msec: (.*EXCEPTION:)(.*)", line_prepared_for_regex) 
+    elif ": [[ERR ]]" in line_prepared_for_regex: 
+           line_prepared_for_regex = re.split(": \[\[ERR \]\] (.*:)(.*)", line_prepared_for_regex)    
     else:
-        return MachineState.search_error              
-    if known_frontend_errors[error_group].get(error_subgroup_regex[1]) is None:    
-        known_frontend_errors[error_group].update({error_subgroup_regex[1] : []})  
-        known_frontend_errors[error_group][error_subgroup_regex[1]].append(int(line[0]))
-    else:     
-        known_frontend_errors[error_group][error_subgroup_regex[1]].append(int(line[0]))   
-    return MachineState.found_error   
+        return MachineState.search_error
+    error_group = ".*" + prepare_string_for_regex(line_prepared_for_regex[1])
+    error_subgroup = prepare_string_for_regex(line_prepared_for_regex[2])
+    line_regex = re.compile(error_group + error_subgroup)
+    if known_frontend_errors.get(error_group) is None:         
+        known_frontend_errors.update({error_group : {error_subgroup : [line_regex, int(line[0])]}})
+    else:   
+        known_frontend_errors[error_group].update({error_subgroup : [line_regex,  int(line[0])]}) 
 
 
 def filter_error_lines(infile, known_frontend_errors):  
@@ -105,25 +101,18 @@ def filter_error_lines(infile, known_frontend_errors):
     :param: infile:  file which is generated by the program "extract_monthly_frontend_entries.py"
     :param: known_frontend_errors: dictionary of the errors, which are already registered
     """               
-    client_logger_error_regex_dict = compile_regex_dict(deepcopy(known_frontend_errors))             
-    with open(infile, 'r') as file:         
-        for line in file:
+    compile_regex_dict(known_frontend_errors)            
+    with open(infile, 'r') as input_file:         
+        for line in input_file:
             machine_state = MachineState.search_error
             line = re.split('::',line)        
-            machine_state = search_known_error(known_frontend_errors, client_logger_error_regex_dict, line)
-            if machine_state == MachineState.found_error:      
+            if search_known_error(known_frontend_errors, line) == MachineState.found_error:      
                 continue
-            elif machine_state == MachineState.search_error:     
-                machine_state = search_unknown_error(known_frontend_errors, client_logger_error_regex_dict, line) 
-                if machine_state == MachineState.found_error:   
-                    client_logger_error_regex_dict = compile_regex_dict(deepcopy(known_frontend_errors)) 
-                elif  machine_state == MachineState.search_error:
-                    continue
-                else:
-                    raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))                      
+            elif machine_state == MachineState.search_error:            
+                search_unknown_error(known_frontend_errors, line)                
             else:
                 raise Exception('machine_state is invalid. The value of machine_state was: {}'.format(machine_state))     
-                        
+                  
                     
 def write_output_file(outfile, known_frontend_errors):    
     """ for formating and for creating of the output file
@@ -134,16 +123,16 @@ def write_output_file(outfile, known_frontend_errors):
         for error_group,value  in known_frontend_errors.items():
             output_file.write(remove_regex_escapes(error_group) + '\n')            
             for error_subgroup in value:                
+                known_frontend_errors[error_group][error_subgroup].pop(0)
                 number_of_errors = len(known_frontend_errors[error_group][error_subgroup])
                 if 0 < number_of_errors < 10:   
-                    all_error_appearances = str(known_frontend_errors[error_group][error_subgroup])
-                    output_file.write('{:10s} {:s} {:s}\n'.format(" ", remove_regex_escapes(error_subgroup), all_error_appearances))                    
+                    output_file.write('{:10s} {:s} {:s}\n'.format(" ", remove_regex_escapes(str(error_subgroup)), str(known_frontend_errors[error_group][error_subgroup])))                    
                 elif number_of_errors  >= 10:                                    
-                    first_error_appearance = known_frontend_errors[error_group][error_subgroup][0]
-                    output_file.write('{:10s} {:s} {:s} {:d} {:s} {:d}{:s}\n'.format(" ", remove_regex_escapes(error_subgroup), ": [number of errors:", number_of_errors, ", first error appearance:", first_error_appearance, "]"))                       
+                    output_file.write('{:10s} {:s} {:s} {:d} {:s} {:d}{:s}\n'.format(" ", remove_regex_escapes(str(error_subgroup)), ": [number of errors:", number_of_errors, ", first error appearance:", known_frontend_errors[error_group][error_subgroup][0], "]"))                       
                 else:
-                    continue         
-    
+                    output_file.write('{:10s} {:s}{:s}\n'.format(" ", remove_regex_escapes(str(error_subgroup)), ": [ Ø ]"))                         
+  
+  
 def main():
     """ main function serves for process control    
     """    
@@ -151,7 +140,8 @@ def main():
         filter_error_lines(sys.argv[1],  FrontendErrors.known_frontend_errors) 
         write_output_file(sys.argv[2], FrontendErrors.known_frontend_errors)
     except IndexError:
-        sys.exit("usage: extract_monthly_frontend_entries <infile> <outfile>") 
+        sys.exit("usage: extract_monthly_frontend_entries <infile> <outfile>")         
+
 
 if __name__ == "__main__":
     main()        
