@@ -16,6 +16,8 @@ def prepare_string_for_regex(string):
     """
     string = string.replace("[", "\[") 
     string = string.replace("]", "\]") 
+    string = string.replace("{", "\{") 
+    string = string.replace("}", "\}")
     string = string.replace("(", "\(") 
     string = string.replace(")", "\)") 
     string = string.replace("\"", "\\\"")    
@@ -28,7 +30,9 @@ def remove_regex_escapes(string):
         :param: string: string to process
     """
     string = string.replace("\[", "[") 
-    string = string.replace("\]", "]")     
+    string = string.replace("\]", "]")  
+    string = string.replace("\{", "{") 
+    string = string.replace("\}", "}")     
     string = string.replace("\(", "(") 
     string = string.replace("\)", ")") 
     string = string.replace("\\\"", "\"")    
