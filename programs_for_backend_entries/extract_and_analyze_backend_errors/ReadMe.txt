@@ -1,5 +1,6 @@
 How to test program
-→python3 extract_and_analyze_backend_errors.py test_outfile_backend_entries.txt test_outfile_backend_errors.txt
+→python3 extract_and_analyze_backend_errors.py test_outfile_backend_entries.txt test_outfile_backend_errors.txt - -
+→"- -" meaning the file is being examined from the beginning to the end of the file
 
 
 General to the test

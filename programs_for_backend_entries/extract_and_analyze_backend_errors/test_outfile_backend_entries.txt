@@ -1,24 +1,24 @@
 00000001!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
 00000002!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
 00000003!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000004!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000005!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000006!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000007!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000008!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000009!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000010!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000011!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000012!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
-00000013!!!!!2020-04-01 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 2
-00000014!!!!!2020-04-10 09:17:47: ERROR d.f.i.r.w.c.ArduinoCompilerWorker - compile mbot program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, fictional error: 3
-00000015!!!!!2020-04-10 09:17:47: ERROR d.f.i.r.w.c.ArduinoCompilerWorker - compile mbot program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, fictional error: 3
-00000016!!!!!2020-04-01 09:31:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
-00000017!!!!!2020-04-01 09:32:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
-00000018!!!!!2020-04-01 09:33:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
-00000019!!!!!2020-04-01 09:34:33: ERROR d.f.i.r.j.p.DbcKeyExceptionMapper - init exception was caught at system border: invalid init token
-00000020!!!!!2020-04-01 09:35:33: ERROR d.f.i.r.j.p.DbcKeyExceptionMapper - init exception was caught at system border: invalid init token
-00000021!!!!!2020-04-01 09:36:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG
-00000022!!!!!2020-04-01 09:36:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG
-00000023!!!!!2020-04-01 09:37:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: PROGRAM_GET_ONE_ERROR_NOT_FOUND
-00000024!!!!!2020-04-01 09:45:33: ERROR d.f.i.r.w.c.SenseboxCompilerWorker - compile sensebox program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, /tmp/openrobertaTmp/f2MV0_x3t-O_/NEPOprog/source/NEPOprog.ino: In function 'void loop()':
+00000004!!!!!2020-04-02 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000005!!!!!2020-04-03 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000006!!!!!2020-04-04 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000007!!!!!2020-04-05 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000008!!!!!2020-04-06 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000009!!!!!2020-04-07 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000010!!!!!2020-04-08 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000011!!!!!2020-04-09 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000012!!!!!2020-04-10 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 1
+00000013!!!!!2020-04-11 00:40:09: ERROR d.f.i.r.j.p.Invented.Robot.CompilerWorker - fictional error: 2
+00000014!!!!!2020-04-12 09:17:47: ERROR d.f.i.r.w.c.ArduinoCompilerWorker - compile mbot program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, fictional error: 3
+00000015!!!!!2020-04-13 09:17:47: ERROR d.f.i.r.w.c.ArduinoCompilerWorker - compile mbot program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, fictional error: 3
+00000016!!!!!2020-04-14 09:31:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
+00000017!!!!!2020-04-18 09:32:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
+00000018!!!!!2020-04-19 09:33:33: ERROR d.f.i.r.j.r.a.controller.ClientUser - Invalid command: login
+00000019!!!!!2020-04-21 09:34:33: ERROR d.f.i.r.j.p.DbcKeyExceptionMapper - init exception was caught at system border: invalid init token
+00000020!!!!!2020-04-22 09:35:33: ERROR d.f.i.r.j.p.DbcKeyExceptionMapper - init exception was caught at system border: invalid init token
+00000021!!!!!2020-04-23 09:36:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG
+00000022!!!!!2020-04-28 09:36:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG
+00000023!!!!!2020-04-30 09:37:33: INFO d.f.i.r.p.AbstractProcessor - Processor failed: PROGRAM_GET_ONE_ERROR_NOT_FOUND
+00000024!!!!!2020-04-31 09:45:33: ERROR d.f.i.r.w.c.SenseboxCompilerWorker - compile sensebox program NEPOprog failed with (COMPILERWORKFLOW_ERROR_PROGRAM_COMPILE_FAILED, /tmp/openrobertaTmp/f2MV0_x3t-O_/NEPOprog/source/NEPOprog.ino: In function 'void loop()':
